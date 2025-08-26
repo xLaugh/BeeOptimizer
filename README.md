@@ -1,6 +1,6 @@
 # 🐝 BeeOptimizer
 
-**Optimiseur Minecraft professionnel pour améliorer vos performances de jeu**
+**Optimiseur Minecraft pour améliorer vos performances de jeu**
 
 ![Version](https://img.shields.io/badge/version-0.0.1-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows-blue.svg)
@@ -20,14 +20,6 @@
 - 🌍 **Support multilingue**
   - Interface en Français et Anglais
   - Détection automatique de la langue système
-
-## 📸 Captures d'écran
-
-### Page d'accueil
-![Page d'accueil](screenshots/home.png)
-
-### Page À propos
-![Page À propos](screenshots/about.png)
 
 ## 🚀 Installation
 
