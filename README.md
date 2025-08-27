@@ -69,7 +69,4 @@ dotnet build --configuration Release
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## ⚠️ Avertissement
-
-BeeOptimizer nécessite les droits administrateur pour modifier les priorités des processus et accéder aux dossiers système. Utilisez uniquement sur des systèmes de confiance.
 
