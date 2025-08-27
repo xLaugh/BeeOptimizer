@@ -58,33 +58,12 @@ dotnet build --configuration Release
    - Cliquez sur le drapeau en bas à droite
    - Sélectionnez votre langue préférée
 
-## 🛠️ Technologies utilisées
-
-- **C#** - Langage principal
-- **.NET 8.0** - Framework
-- **Windows Forms** - Interface utilisateur
-- **System.Management** - Gestion des processus
-- **System.IO** - Opérations fichiers
-
 ### Comment contribuer :
 1. Fork le projet
 2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/NouvelleFonctionnalite`)
 3. Committez vos changements (`git commit -m 'Ajouter NouvelleFonctionnalite'`)
 4. Push vers la branche (`git push origin feature/NouvelleFonctionnalite`)
 5. Ouvrez une Pull Request
-
-## 🐛 Signaler un bug
-
-Utilisez les [Issues GitHub](https://github.com/xLaugh/BeeOptimizer/issues) pour signaler des bugs ou proposer des améliorations.
-
-## 📋 Roadmap
-
-- [ ] Optimisation automatique au démarrage
-- [ ] Support pour d'autres jeux
-- [ ] Interface en mode sombre
-- [ ] Sauvegarde des paramètres utilisateur
-- [ ] Optimisations réseau
-- [ ] Support pour les mods Minecraft
 
 ## 📄 Licence
 
@@ -93,3 +72,4 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 ## ⚠️ Avertissement
 
 BeeOptimizer nécessite les droits administrateur pour modifier les priorités des processus et accéder aux dossiers système. Utilisez uniquement sur des systèmes de confiance.
+
