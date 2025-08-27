@@ -58,15 +58,9 @@ dotnet build --configuration Release
    - Cliquez sur le drapeau en bas à droite
    - Sélectionnez votre langue préférée
 
-### Comment contribuer :
-1. Fork le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/NouvelleFonctionnalite`)
-3. Committez vos changements (`git commit -m 'Ajouter NouvelleFonctionnalite'`)
-4. Push vers la branche (`git push origin feature/NouvelleFonctionnalite`)
-5. Ouvrez une Pull Request
-
 ## 📄 Licence
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
 
 
