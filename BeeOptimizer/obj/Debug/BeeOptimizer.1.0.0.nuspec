@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>BeeOptimizer</id>
+    <version>1.0.0</version>
+    <authors>BeeOptimizer</authors>
+    <description>Package Description</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework="net8.0-windows7.0">
+        <dependency id="System.Management" version="8.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\Laugh\source\repos\BeeOptimizer\BeeOptimizer\bin\Debug\net8.0-windows\BeeOptimizer.runtimeconfig.json" target="lib\net8.0-windows7.0\BeeOptimizer.runtimeconfig.json" />
+    <file src="C:\Users\Laugh\source\repos\BeeOptimizer\BeeOptimizer\bin\Debug\net8.0-windows\BeeOptimizer.dll" target="lib\net8.0-windows7.0\BeeOptimizer.dll" />
+  </files>
+</package>

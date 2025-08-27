@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Security.Principal;
+using System.ServiceProcess;
 
 namespace BeeOptimizer
 {
@@ -314,6 +315,89 @@ namespace BeeOptimizer
                 return $"{bytes} bytes";
         }
 
+        private void btnDisableServices_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                statusLabel.Text = LanguageManager.DisablingServices;
+                statusLabel.ForeColor = Color.FromArgb(255, 152, 0);
+                Application.DoEvents();
+
+                var servicesToDisable = new[]
+                {
+                    new { Name = "SysMain", DisplayName = "Superfetch (SysMain)" },
+                    new { Name = "DPS", DisplayName = "Service de stratégie de diagnostic (DPS)" },
+                    new { Name = "Spooler", DisplayName = "Spouleur d'impression (Spooler)" },
+                    new { Name = "TabletInputService", DisplayName = "Service du clavier tactile et du volet d'écriture manuscrite (TabletInputService)" },
+                    new { Name = "RmSvc", DisplayName = "Service de gestion radio (RmSvc)" }
+                };
+
+                int disabledCount = 0;
+                var disabledServices = new List<string>();
+
+                foreach (var service in servicesToDisable)
+                {
+                    try
+                    {
+                        using (ServiceController sc = new ServiceController(service.Name))
+                        {
+                            // Arrêter le service s'il est en cours d'exécution
+                            if (sc.Status == ServiceControllerStatus.Running)
+                            {
+                                sc.Stop();
+                                sc.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(10));
+                            }
+
+                            // Désactiver le service
+                            using (var process = new Process())
+                            {
+                                process.StartInfo.FileName = "sc";
+                                process.StartInfo.Arguments = $"config {service.Name} start= disabled";
+                                process.StartInfo.UseShellExecute = false;
+                                process.StartInfo.CreateNoWindow = true;
+                                process.Start();
+                                process.WaitForExit();
+
+                                if (process.ExitCode == 0)
+                                {
+                                    disabledCount++;
+                                    disabledServices.Add(service.DisplayName);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Continuer avec les autres services même si un échoue
+                        Console.WriteLine($"Erreur lors de la désactivation de {service.Name}: {ex.Message}");
+                    }
+                }
+
+                if (disabledCount > 0)
+                {
+                    statusLabel.Text = LanguageManager.ServicesDisabled(disabledCount);
+                    statusLabel.ForeColor = Color.FromArgb(76, 175, 80);
+                    
+                    string servicesList = string.Join("\n• ", disabledServices);
+                    MessageBox.Show(LanguageManager.ServicesDisabledMessage(disabledCount, servicesList),
+                        LanguageManager.ServicesDisabledTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    statusLabel.Text = LanguageManager.NoServicesDisabled;
+                    statusLabel.ForeColor = Color.FromArgb(244, 67, 54);
+                    MessageBox.Show(LanguageManager.NoServicesDisabledMessage,
+                        LanguageManager.ServicesDisabledTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                statusLabel.Text = LanguageManager.ServicesError;
+                statusLabel.ForeColor = Color.FromArgb(244, 67, 54);
+                MessageBox.Show(LanguageManager.ErrorMessage(ex.Message), LanguageManager.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void minecraftTitle_Click(object sender, EventArgs e)
         {
 
@@ -420,6 +504,9 @@ namespace BeeOptimizer
             minecraftTitle.Text = LanguageManager.BoostMinecraftTitle;
             minecraftDesc.Text = LanguageManager.BoostMinecraftDesc;
             btnBoostMinecraft.Text = LanguageManager.BoostMinecraftButton;
+            servicesTitle.Text = LanguageManager.DisableServicesTitle;
+            servicesDesc.Text = LanguageManager.DisableServicesDesc;
+            btnDisableServices.Text = LanguageManager.DisableServicesButton;
             btnAboutSmall.Text = LanguageManager.AboutButton;
             // Garder la barre de statut vide par défaut (sauf si une action est en cours)
             if (statusLabel.Text == "Prêt pour l'optimisation" || statusLabel.Text == "Ready for optimization" || statusLabel.Text.Contains("Mode Administrateur") || statusLabel.Text.Contains("Administrator mode"))

@@ -76,5 +76,24 @@ namespace BeeOptimizer
         public static string CheckRightsError => IsEnglish ?
             "❌ Error checking rights" :
             "❌ Erreur lors de la vérification des droits";
+
+        // Textes pour la désactivation des services
+        public static string DisableServicesTitle => IsEnglish ? "Disable Services" : "Désactiver les services";
+        public static string DisableServicesDesc => IsEnglish ? "Disable unnecessary Windows services to improve performance." : "Désactive les services Windows inutiles pour améliorer les performances.";
+        public static string DisableServicesButton => IsEnglish ? "Disable unnecessary services" : "Désactiver services inutiles";
+        public static string DisablingServices => IsEnglish ? "Disabling services..." : "Désactivation des services...";
+        public static string ServicesDisabled(int count) => IsEnglish ? 
+            $"✅ {count} services disabled" : 
+            $"✅ {count} services désactivés";
+        public static string NoServicesDisabled => IsEnglish ? "❌ No services disabled" : "❌ Aucun service désactivé";
+        public static string ServicesError => IsEnglish ? "❌ Error disabling services" : "❌ Erreur lors de la désactivation des services";
+        
+        public static string ServicesDisabledTitle => IsEnglish ? "Services Disabled" : "Services Désactivés";
+        public static string ServicesDisabledMessage(int count, string servicesList) => IsEnglish ?
+            $"Services disabled successfully!\n\nDisabled services ({count}):\n• {servicesList}" :
+            $"Services désactivés avec succès !\n\nServices désactivés ({count}) :\n• {servicesList}";
+        public static string NoServicesDisabledMessage => IsEnglish ?
+            "No services were disabled.\n\nThis may be because:\n• Services are already disabled\n• Services don't exist on this system\n• Insufficient permissions" :
+            "Aucun service n'a été désactivé.\n\nCela peut être dû à :\n• Les services sont déjà désactivés\n• Les services n'existent pas sur ce système\n• Permissions insuffisantes";
     }
 }

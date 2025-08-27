@@ -43,7 +43,11 @@
             minecraftTitle = new Label();
             minecraftDesc = new Label();
             btnBoostMinecraft = new Button();
-            statusLabel = new Label();
+            servicesPanel = new Panel();
+            servicesIcon = new Label();
+            servicesTitle = new Label();
+            servicesDesc = new Label();
+            btnDisableServices = new Button();
             btnAboutSmall = new Button();
             btnLanguageFlag = new PictureBox();
             picFrenchFlag = new PictureBox();
@@ -56,10 +60,12 @@
             aboutFeaturesLabel = new Label();
             aboutDevLabel = new Label();
             btnBackHome = new Button();
+            statusLabel = new Label();
             homePagePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logoBox).BeginInit();
             tempFilesPanel.SuspendLayout();
             minecraftPanel.SuspendLayout();
+            servicesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnLanguageFlag).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picFrenchFlag).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picEnglishFlag).BeginInit();
@@ -76,12 +82,13 @@
             homePagePanel.Controls.Add(homeVersionLabel);
             homePagePanel.Controls.Add(tempFilesPanel);
             homePagePanel.Controls.Add(minecraftPanel);
+            homePagePanel.Controls.Add(servicesPanel);
             homePagePanel.Controls.Add(statusLabel);
             homePagePanel.Controls.Add(btnAboutSmall);
             homePagePanel.Dock = DockStyle.Fill;
             homePagePanel.Location = new Point(0, 0);
             homePagePanel.Name = "homePagePanel";
-            homePagePanel.Size = new Size(800, 320);
+            homePagePanel.Size = new Size(1000, 320);
             homePagePanel.TabIndex = 0;
             // 
             // logoBox
@@ -247,17 +254,65 @@
             btnBoostMinecraft.UseVisualStyleBackColor = false;
             btnBoostMinecraft.Click += btnBoostMinecraft_Click;
             // 
-            // statusLabel
+            // servicesPanel
             // 
-            statusLabel.AutoSize = true;
-            statusLabel.Font = new Font("Segoe UI", 9F);
-            statusLabel.ForeColor = Color.FromArgb(128, 128, 128);
-            statusLabel.Location = new Point(50, 285);
-            statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(132, 15);
-            statusLabel.TabIndex = 5;
-            statusLabel.Text = "Prêt pour l'optimisation";
-            statusLabel.Click += statusLabel_Click;
+            servicesPanel.BackColor = Color.FromArgb(255, 252, 230);
+            servicesPanel.BorderStyle = BorderStyle.FixedSingle;
+            servicesPanel.Controls.Add(servicesIcon);
+            servicesPanel.Controls.Add(servicesTitle);
+            servicesPanel.Controls.Add(servicesDesc);
+            servicesPanel.Controls.Add(btnDisableServices);
+            servicesPanel.Location = new Point(680, 120);
+            servicesPanel.Name = "servicesPanel";
+            servicesPanel.Size = new Size(280, 150);
+            servicesPanel.TabIndex = 4;
+            // 
+            // servicesIcon
+            // 
+            servicesIcon.AutoSize = true;
+            servicesIcon.Font = new Font("Segoe UI", 20F);
+            servicesIcon.ForeColor = Color.FromArgb(156, 39, 176);
+            servicesIcon.Location = new Point(15, 15);
+            servicesIcon.Name = "servicesIcon";
+            servicesIcon.Size = new Size(54, 37);
+            servicesIcon.TabIndex = 0;
+            servicesIcon.Text = "🔧";
+            // 
+            // servicesTitle
+            // 
+            servicesTitle.AutoSize = true;
+            servicesTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            servicesTitle.ForeColor = Color.FromArgb(64, 64, 64);
+            servicesTitle.Location = new Point(69, 20);
+            servicesTitle.Name = "servicesTitle";
+            servicesTitle.Size = new Size(180, 21);
+            servicesTitle.TabIndex = 1;
+            servicesTitle.Text = "Désactiver les services";
+            // 
+            // servicesDesc
+            // 
+            servicesDesc.Font = new Font("Segoe UI", 9F);
+            servicesDesc.ForeColor = Color.FromArgb(128, 128, 128);
+            servicesDesc.Location = new Point(15, 55);
+            servicesDesc.Name = "servicesDesc";
+            servicesDesc.Size = new Size(250, 40);
+            servicesDesc.TabIndex = 2;
+            servicesDesc.Text = "Désactive les services Windows inutiles pour améliorer les performances.";
+            // 
+            // btnDisableServices
+            // 
+            btnDisableServices.BackColor = Color.FromArgb(255, 193, 7);
+            btnDisableServices.FlatAppearance.BorderSize = 0;
+            btnDisableServices.FlatStyle = FlatStyle.Flat;
+            btnDisableServices.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnDisableServices.ForeColor = Color.FromArgb(51, 51, 51);
+            btnDisableServices.Location = new Point(15, 105);
+            btnDisableServices.Name = "btnDisableServices";
+            btnDisableServices.Size = new Size(250, 35);
+            btnDisableServices.TabIndex = 3;
+            btnDisableServices.Text = "Désactiver services inutiles";
+            btnDisableServices.UseVisualStyleBackColor = false;
+            btnDisableServices.Click += btnDisableServices_Click;
             // 
             // btnAboutSmall
             // 
@@ -266,7 +321,7 @@
             btnAboutSmall.FlatStyle = FlatStyle.Flat;
             btnAboutSmall.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             btnAboutSmall.ForeColor = Color.FromArgb(51, 51, 51);
-            btnAboutSmall.Location = new Point(720, 10);
+            btnAboutSmall.Location = new Point(920, 10);
             btnAboutSmall.Name = "btnAboutSmall";
             btnAboutSmall.Size = new Size(70, 25);
             btnAboutSmall.TabIndex = 6;
@@ -278,7 +333,7 @@
             // 
             btnLanguageFlag.BackColor = Color.Transparent;
             btnLanguageFlag.Cursor = Cursors.Hand;
-            btnLanguageFlag.Location = new Point(765, 290);
+            btnLanguageFlag.Location = new Point(965, 290);
             btnLanguageFlag.Name = "btnLanguageFlag";
             btnLanguageFlag.Size = new Size(30, 20);
             btnLanguageFlag.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -290,7 +345,7 @@
             // 
             picFrenchFlag.BackColor = Color.Transparent;
             picFrenchFlag.Cursor = Cursors.Hand;
-            picFrenchFlag.Location = new Point(765, 260);
+            picFrenchFlag.Location = new Point(965, 260);
             picFrenchFlag.Name = "picFrenchFlag";
             picFrenchFlag.Size = new Size(30, 20);
             picFrenchFlag.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -303,7 +358,7 @@
             // 
             picEnglishFlag.BackColor = Color.Transparent;
             picEnglishFlag.Cursor = Cursors.Hand;
-            picEnglishFlag.Location = new Point(765, 230);
+            picEnglishFlag.Location = new Point(965, 230);
             picEnglishFlag.Name = "picEnglishFlag";
             picEnglishFlag.Size = new Size(30, 20);
             picEnglishFlag.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -325,7 +380,7 @@
             aboutPagePanel.Dock = DockStyle.Fill;
             aboutPagePanel.Location = new Point(0, 0);
             aboutPagePanel.Name = "aboutPagePanel";
-            aboutPagePanel.Size = new Size(800, 320);
+            aboutPagePanel.Size = new Size(1000, 320);
             aboutPagePanel.TabIndex = 1;
             aboutPagePanel.Visible = false;
             // 
@@ -397,7 +452,7 @@
             btnBackHome.FlatStyle = FlatStyle.Flat;
             btnBackHome.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             btnBackHome.ForeColor = Color.FromArgb(51, 51, 51);
-            btnBackHome.Location = new Point(720, 10);
+            btnBackHome.Location = new Point(920, 10);
             btnBackHome.Name = "btnBackHome";
             btnBackHome.Size = new Size(70, 25);
             btnBackHome.TabIndex = 7;
@@ -405,12 +460,24 @@
             btnBackHome.UseVisualStyleBackColor = false;
             btnBackHome.Click += btnBackHome_Click;
             // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Font = new Font("Segoe UI", 9F);
+            statusLabel.ForeColor = Color.FromArgb(128, 128, 128);
+            statusLabel.Location = new Point(50, 285);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new Size(132, 15);
+            statusLabel.TabIndex = 5;
+            statusLabel.Text = "Prêt pour l'optimisation";
+            statusLabel.Click += statusLabel_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 248, 220);
-            ClientSize = new Size(800, 320);
+            ClientSize = new Size(1000, 320);
             Controls.Add(homePagePanel);
             Controls.Add(aboutPagePanel);
             Controls.Add(btnLanguageFlag);
@@ -428,6 +495,8 @@
             tempFilesPanel.PerformLayout();
             minecraftPanel.ResumeLayout(false);
             minecraftPanel.PerformLayout();
+            servicesPanel.ResumeLayout(false);
+            servicesPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnLanguageFlag).EndInit();
             ((System.ComponentModel.ISupportInitialize)picFrenchFlag).EndInit();
             ((System.ComponentModel.ISupportInitialize)picEnglishFlag).EndInit();
@@ -454,7 +523,11 @@
         private System.Windows.Forms.Label minecraftTitle;
         private System.Windows.Forms.Label minecraftDesc;
         private System.Windows.Forms.Button btnBoostMinecraft;
-        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Panel servicesPanel;
+        private System.Windows.Forms.Label servicesIcon;
+        private System.Windows.Forms.Label servicesTitle;
+        private System.Windows.Forms.Label servicesDesc;
+        private System.Windows.Forms.Button btnDisableServices;
         private System.Windows.Forms.Button btnAboutSmall;
         private System.Windows.Forms.Button btnBackHome;
         private System.Windows.Forms.Label aboutTitleLabel;
@@ -467,5 +540,6 @@
         private System.Windows.Forms.PictureBox picFrenchFlag;
         private System.Windows.Forms.PictureBox picEnglishFlag;
         private System.Windows.Forms.Label homeVersionLabel;
+        private Label statusLabel;
     }
 }
